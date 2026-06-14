@@ -6,7 +6,6 @@ const navLinks = document.getElementById("navLinks");
 const galleryItems = document.querySelectorAll(".gallery-item");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
-const lightboxPlaceholder = document.getElementById("lightboxPlaceholder");
 const lightboxClose = document.getElementById("lightboxClose");
 const reservationForm = document.getElementById("reservationForm");
 const backToTop = document.getElementById("backToTop");
@@ -45,15 +44,8 @@ updateHeaderState();
 galleryItems.forEach((item) => {
   item.addEventListener("click", () => {
     const image = item.querySelector("img");
-    if (image) {
-      lightboxImage.src = image.src;
-      lightboxImage.alt = image.alt;
-      lightboxImage.hidden = false;
-      lightboxPlaceholder.hidden = true;
-    } else {
-      lightboxImage.hidden = true;
-      lightboxPlaceholder.hidden = false;
-    }
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
@@ -66,8 +58,6 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.classList.remove("lightbox-open");
   lightboxImage.src = "";
-  lightboxImage.hidden = false;
-  lightboxPlaceholder.hidden = true;
 }
 
 lightboxClose.addEventListener("click", closeLightbox);

@@ -200,10 +200,10 @@ select {
   position: relative;
 }
 
-.hero-photo,
-.hero .photo-placeholder {
+.hero-image {
   height: 100%;
   inset: 0;
+  object-fit: cover;
   position: absolute;
   width: 100%;
 }
@@ -387,6 +387,12 @@ h3 {
   overflow: hidden;
 }
 
+.chef-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+
 .chef-card div:last-child {
   padding: 22px;
 }
@@ -453,34 +459,6 @@ h3 {
   width: min(100%, 230px);
 }
 
-.photo-placeholder {
-  align-content: center;
-  background:
-    linear-gradient(135deg, rgba(215, 168, 74, 0.18), rgba(184, 107, 50, 0.08)),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.045) 0 10px, transparent 10px 20px),
-    var(--charcoal);
-  border: 1px dashed rgba(215, 168, 74, 0.55);
-  color: var(--ink);
-  display: grid;
-  gap: 8px;
-  justify-items: center;
-  min-height: 280px;
-  padding: 24px;
-  text-align: center;
-}
-
-.photo-placeholder span {
-  color: var(--gold);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.photo-placeholder small {
-  color: var(--muted);
-  max-width: 300px;
-}
-
 .gallery-section {
   background: var(--charcoal);
   color: var(--ink);
@@ -500,15 +478,18 @@ h3 {
   padding: 0;
 }
 
-.gallery-item .photo-placeholder {
+.gallery-item img {
   aspect-ratio: 1 / 0.78;
+  height: 100%;
   min-height: 0;
-  transition: transform 420ms ease, border-color 220ms ease;
+  object-fit: cover;
+  transition: transform 420ms ease, filter 220ms ease;
+  width: 100%;
 }
 
-.gallery-item:hover .photo-placeholder,
-.gallery-item:focus-visible .photo-placeholder {
-  border-color: var(--gold);
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  filter: saturate(1.08) brightness(1.05);
   transform: scale(1.035);
 }
 
@@ -658,30 +639,6 @@ select:focus {
   max-height: 82vh;
   object-fit: contain;
   width: min(980px, 100%);
-}
-
-.lightbox-placeholder {
-  align-content: center;
-  background:
-    linear-gradient(135deg, rgba(215, 168, 74, 0.18), rgba(184, 107, 50, 0.08)),
-    var(--charcoal);
-  border: 1px dashed rgba(215, 168, 74, 0.55);
-  border-radius: var(--radius);
-  color: var(--ink);
-  display: grid;
-  gap: 10px;
-  justify-items: center;
-  min-height: 360px;
-  padding: 30px;
-  text-align: center;
-  width: min(780px, 100%);
-}
-
-.lightbox-placeholder span {
-  color: var(--gold);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.3rem, 9vw, 4.3rem);
-  font-weight: 700;
 }
 
 .lightbox-close,
